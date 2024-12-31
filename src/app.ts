@@ -1,10 +1,10 @@
 import express from "express";
 import bodyParser from "body-parser";
-import waitListRoutes from "./routes/waitList.route";
-import referralRoutes from "./routes/referral.route";
-import emojiFeedbackRoutes from "./routes/emoji-feedback.route";
-import feedbackRoutes from "./routes/feedback.route";
-import eventLoggerRoutes from "./routes/event-logger.route";
+import waitListRoutes from "./routes/waitList.routes";
+import referralRoutes from "./routes/referral.routes";
+import emojiFeedbackRoutes from "./routes/emoji-feedback.routes";
+import feedbackRoutes from "./routes/feedback.routes";
+import eventLoggerRoutes from "./routes/event-logger.routes";
 
 const app = express();
 const PORT = process.env.PORT || 8000;

@@ -1,24 +1,37 @@
 import { Request, Response } from "express";
+import { EventLoggerService } from "../services/event-logger.service";
+import { EventData } from "../utils/interfaces/event-logger.interface";
 
-// event logger controller to handle POST requests.
+/**
+ * Controller class to handle event logging.
+ */
+export class EventLoggerController {
+  private eventLoggerService: EventLoggerService;
 
-export const eventLoggerController = async (
-  req: Request,
-  res: Response
-): Promise<Response> => {
-  const eventLoggerData = req.body;
-
-  if (eventLoggerData) {
-    console.log(eventLoggerData);
-    return res.status(200).json({
-      status: "success",
-      message: `event logger data logged in successfully`,
-    });
-  } else {
-    console.error("Error processing event logger data");
-    return res.status(500).json({
-      status: "error",
-      message: "Internal server error.",
-    });
+  constructor() {
+    this.eventLoggerService = new EventLoggerService();
   }
-};
+
+  /**
+   * Handle the event logging request.
+   * @param req - Express request object.
+   * @param res - Express response object.
+   */
+  public async handleEvent(
+    req: Request<{}, {}, EventData>,
+    res: Response
+  ): Promise<Response> {
+    const eventData = req.body;
+
+    try {
+      const response = await this.eventLoggerService.logEvent(eventData);
+      return res.status(response.statusCode).json(response.body);
+    } catch (error) {
+      console.error("Error processing event:", error);
+      return res.status(500).json({
+        status: "error",
+        message: "Internal server error.",
+      });
+    }
+  }
+}

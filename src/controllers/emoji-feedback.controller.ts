@@ -1,23 +1,31 @@
 import { Request, Response } from "express";
+import { EmojiFeedbackService } from "../services/emoji-feedback.service";
 
-// Controller to handle the emoji feedback logic
-export const emojiFeedbackController = async (
-  req: Request,
-  res: Response
-): Promise<Response> => {
-  const emojiFeedbackData = req.body;
+// Controller class to handle the emoji feedback logic
+export class EmojiFeedbackController {
+  private emojiFeedbackService: EmojiFeedbackService;
 
-  if (emojiFeedbackData) {
-    console.log(emojiFeedbackData);
-    return res.status(200).json({
-      status: "success",
-      message: `Emoji Feedback Data logged in successfully`,
-    });
-  } else {
-    console.error("Error processing emoji feedback:");
-    return res.status(500).json({
-      status: "error",
-      message: "Internal server error.",
-    });
+  constructor() {
+    this.emojiFeedbackService = new EmojiFeedbackService();
   }
-};
+
+  public async handleEmojiFeedback(
+    req: Request,
+    res: Response
+  ): Promise<Response> {
+    const feedbackData = req.body;
+
+    try {
+      const response = await this.emojiFeedbackService.processEmojiFeedback(
+        feedbackData
+      );
+      return res.status(response.statusCode).json(response.body);
+    } catch (error) {
+      console.error("Error processing emoji feedback:", error);
+      return res.status(500).json({
+        status: "error",
+        message: "Internal server error.",
+      });
+    }
+  }
+}
