@@ -42,14 +42,14 @@ const tables: TableSchema[] = [
         KeySchema: [{ AttributeName: "email", KeyType: "HASH" }],
         Projection: { ProjectionType: "ALL" },
         ProvisionedThroughput: {
-          ReadCapacityUnits: 5,
-          WriteCapacityUnits: 5,
+          ReadCapacityUnits: 1,
+          WriteCapacityUnits: 1,
         },
       },
     ],
     ProvisionedThroughput: {
-      ReadCapacityUnits: 5,
-      WriteCapacityUnits: 5,
+      ReadCapacityUnits: 1,
+      WriteCapacityUnits: 1,
     },
   },
   // Referral table
@@ -69,8 +69,8 @@ const tables: TableSchema[] = [
           ProjectionType: "ALL",
         },
         ProvisionedThroughput: {
-          ReadCapacityUnits: 5,
-          WriteCapacityUnits: 5,
+          ReadCapacityUnits: 1,
+          WriteCapacityUnits: 1,
         },
       },
       {
@@ -80,14 +80,14 @@ const tables: TableSchema[] = [
           ProjectionType: "ALL",
         },
         ProvisionedThroughput: {
-          ReadCapacityUnits: 5,
-          WriteCapacityUnits: 5,
+          ReadCapacityUnits: 1,
+          WriteCapacityUnits: 1,
         },
       },
     ],
     ProvisionedThroughput: {
-      ReadCapacityUnits: 5,
-      WriteCapacityUnits: 5,
+      ReadCapacityUnits: 1,
+      WriteCapacityUnits: 1,
     },
   },
   // EmojiFeedback table
@@ -108,14 +108,14 @@ const tables: TableSchema[] = [
         ],
         Projection: { ProjectionType: "ALL" },
         ProvisionedThroughput: {
-          ReadCapacityUnits: 5,
-          WriteCapacityUnits: 5,
+          ReadCapacityUnits: 1,
+          WriteCapacityUnits: 1,
         },
       },
     ],
     ProvisionedThroughput: {
-      ReadCapacityUnits: 5,
-      WriteCapacityUnits: 5,
+      ReadCapacityUnits: 1,
+      WriteCapacityUnits: 1,
     },
   },
   // Feedback table
@@ -126,8 +126,8 @@ const tables: TableSchema[] = [
       { AttributeName: "feedback_id", AttributeType: "S" },
     ],
     ProvisionedThroughput: {
-      ReadCapacityUnits: 5,
-      WriteCapacityUnits: 5,
+      ReadCapacityUnits: 1,
+      WriteCapacityUnits: 1,
     },
   },
   // EventLogger table
@@ -138,8 +138,8 @@ const tables: TableSchema[] = [
       { AttributeName: "event_logger_id", AttributeType: "S" },
     ],
     ProvisionedThroughput: {
-      ReadCapacityUnits: 5,
-      WriteCapacityUnits: 5,
+      ReadCapacityUnits: 1,
+      WriteCapacityUnits: 1,
     },
   },
 ];
