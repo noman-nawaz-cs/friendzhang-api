@@ -17,6 +17,9 @@ app.use("/api/referral", referralRoutes);
 app.use("/api/emoji", emojiFeedbackRoutes);
 app.use("/api/feedback", feedbackRoutes);
 app.use("/api/events", eventLoggerRoutes);
+app.use("/", (req, res) => {
+  res.status(200).json({ message: "Friendzhang API" });
+});
 
 app.listen(PORT, () => {
   console.log(`Server is running on http://localhost:${PORT}`);
