@@ -7,7 +7,7 @@ import feedbackRoutes from "./routes/feedback.routes";
 import eventLoggerRoutes from "./routes/event-logger.routes";
 
 const app = express();
-const PORT = 3000;
+const PORT = parseInt(process.env.PORT || "3000");
 
 app.use(express.json());
 app.use(bodyParser.json());
