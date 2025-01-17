@@ -7,10 +7,11 @@ EC2_PATH="friendzhang-api"  # Replace with the actual path to your project on th
 GITHUB_REPO="https://github.com/noman-nawaz-cs/friendzhang-api.git"  # Replace with your GitHub repository URL
 
 # SSH into the EC2 instance and pull the latest code
-ssh -i ~/Downloads/nodejs-key.pem $EC2_USER@$EC2_HOST << EOF
+ssh -tt -i ~/Downloads/nodejs-key.pem $EC2_USER@$EC2_HOST << EOF
   cd $EC2_PATH
   git pull origin main  # Replace with your branch name if it's not 'main'
   npm install           # Install dependencies
   npm run build         # Build the app (if needed)
   pm2 restart app       # Restart the app using pm2 (or any process manager you're using)
+  exit
 EOF
