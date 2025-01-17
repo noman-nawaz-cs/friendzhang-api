@@ -1,5 +1,4 @@
 /node_modules
 /dist
 .env
-nodejs-key.pem
 deploy.sh
