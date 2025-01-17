@@ -8,6 +8,7 @@
     "start": "nodemon --exec ts-node src/app.ts",
     "migration": "ts-node create-tables.ts",
     "build": "tsc",
+    "deploy": "bash deploy.sh",
     "serve": "nodemon --exec ts-node dist/app.js"
   },
   "keywords": [],
